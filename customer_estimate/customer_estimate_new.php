@@ -92,18 +92,18 @@
       $customerBillItemId = $dbh->lastInsertId();
 
       $sql = 'UPDATE
-				  customer_bill_item
-			  SET
-				  `created_by` = :createdBy,
-				  `created_on` = :createdOn,
-				  `updated_by` = :updatedBy,
-				  `updated_on` = :updatedOn,
-				  `customer_estimate_ID` = :estimateId,
-          `estimate_type_ID` = :estimateTypeId,
-          `type_ID` = :billItemTypeId,
-          `title` = :title
-			  WHERE
-				  ID = :customerBillItemId';
+		customer_bill_item
+	      SET
+		`created_by` = :createdBy,
+		`created_on` = :createdOn,
+		`updated_by` = :updatedBy,
+		`updated_on` = :updatedOn,
+		`customer_estimate_ID` = :estimateId,
+          	`estimate_type_ID` = :estimateTypeId,
+          	`type_ID` = :billItemTypeId,
+          	`title` = :title
+	       WHERE
+		ID = :customerBillItemId';
 
       $stmt = $core->dbh->prepare($sql);
       $stmt->execute(
@@ -145,11 +145,11 @@
   if($estimateId) {
     echo '<div style="margin: 50px auto 10px auto; width: 300px; text-align: center">Estimate successfully created</div>';
     echo '<div style="margin: 10px auto 50px auto; width: 150px; text-align: center">
-				<button class="menu_section_button" onclick="window.open(\'../customer_estimate/customer_estimate.php?customer_estimate_ID=' . $estimateId . '&tab=5\',
-				 \'customer_estimate_' . $estimateId . '\'); window.close()">
-					Go To Estimate # ' . $estimateId . '
-				</button>
-			</div>';
+	    <button class="menu_section_button" onclick="window.open(\'../customer_estimate/customer_estimate.php?customer_estimate_ID=' . $estimateId . '&tab=5\',
+			 \'customer_estimate_' . $estimateId . '\'); window.close()">
+			   Go To Estimate # ' . $estimateId . '
+	    </button>
+	  </div>';
     exit;
   }
 ?>
