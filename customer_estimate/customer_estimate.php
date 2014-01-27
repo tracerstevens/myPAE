@@ -59,20 +59,20 @@
   /* Push tabs away from left side */
   $tabs->addTabSpacer(60);
 
-  /* Load Product Groups Menu */
+  /* Load Product Groups Menu Tab */
   $billItemsTabsText = "Product Groups (" . totalBillItems('customer_estimate_ID=' . $customerEstimate->ID) . ")";
   $tabs->addTab($billItemsTabsText, 160, 4);
   $tabs->addTabSpacer(2);
 
-  /* Load Edit Menu */
+  /* Load Edit Menu Tab */
   $tabs->addTab("Edit", 100, 2);
   $tabs->addTabSpacer(20);
 
-  /* Load Discussion Menu */
+  /* Load Discussion Menu Tab */
   $tabs->addTab("Discussion", 100, 1);
   $tabs->addTabSpacer(2);
 
-  /* Load Uploads Menu */
+  /* Load Uploads Menu Tab */
   $uploadsTabsText = "Uploads (" . totalUploads('customer_estimate_ID=' . $customerEstimate->ID) . ")";
   $tabs->addTab($uploadsTabsText, 100, 3);
   $tabs->addTabSpacer(10);
