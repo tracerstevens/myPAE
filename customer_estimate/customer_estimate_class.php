@@ -24,9 +24,9 @@
 
       // Get customer estimate information
       $sql = 'SELECT
-            	*
+		*
               FROM
-            	customer_estimate
+		customer_estimate
               WHERE customer_estimate.ID = :customerEstimateId
               LIMIT 1';
 
