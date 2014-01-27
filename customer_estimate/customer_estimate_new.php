@@ -15,6 +15,7 @@
     $shipMethodId       = $_POST['ship_method_ID'];
     $dateRequired       = 0;
 
+    // Select customers default boat to charge estimate to
     $customer = new customer;
     $hullId   = $customer->default_hull_ID($customerId);
 
