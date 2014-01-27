@@ -33,6 +33,7 @@
 
     $salesTaxRate = $row['sales_tax_rate'];
 
+    // Create new row and then update it with user input
     $sql  = 'INSERT INTO `customer_estimate` (`ID`) VALUES ("")';
     $stmt = $core->dbh->prepare($sql);
     $stmt->execute();
