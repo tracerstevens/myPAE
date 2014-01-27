@@ -38,7 +38,7 @@
           $dateRequired = date("U", mktime(0, 0, 0, $dateRequired[month], $dateRequired[day], $dateRequired[year]));
         }
 
-        // Get tax schedule information before update
+        // Get sales tax schedule information before update
         $sql  = 'SELECT sales_tax_schedule_ID, sales_tax_amount FROM customer_estimate WHERE ID = :customerEstimateId';
         $stmt = $core->dbh->prepare($sql);
         $stmt->bindParam(':customerEstimateId', $customerEstimateId);
@@ -57,7 +57,8 @@
 
         $salesTaxRate = $row['sales_tax_rate'];
 
-        // Check if sales tax amount is different, if so update sales tax rate
+        // Check if user input sales tax amount is different than stored sales tax amount
+        // If different update sales tax rate
         if($salesTaxAmountPrevious != $salesTaxAmount) {
           $customerEstimate = new customerEstimate($customerEstimateId);
           $salesTaxRate     = round(($salesTaxAmount / $customerEstimate->displaySubTotal()) * 100, 3);
@@ -103,7 +104,7 @@
 
         // Update sales tax if estimate ship to has changed country state
         if($salesTaxScheduleId <> $salesTaxScheduleIdPrevious) {
-          update_customer_estimate_sales_tax($customerEstimateId);
+          updateCustomerEstimateSalesTax($customerEstimateId);
         }
       }
     }
@@ -111,7 +112,7 @@
     /*
      * Displays input fields for user to edit
      */
-    public function display_report()
+    public function displayReport()
     {
       global $customerEstimate;
 
