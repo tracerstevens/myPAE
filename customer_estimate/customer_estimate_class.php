@@ -24,11 +24,11 @@
 
       // Get customer estimate information
       $sql = 'SELECT
-            		*
-            	FROM
-            		customer_estimate
-            	WHERE customer_estimate.ID = :customerEstimateId
-            	LIMIT 1';
+            	*
+              FROM
+            	customer_estimate
+              WHERE customer_estimate.ID = :customerEstimateId
+              LIMIT 1';
 
       $stmt = $core->dbh->prepare($sql);
       $stmt->bindParam(':customerEstimateId', $customerEstimateId);
