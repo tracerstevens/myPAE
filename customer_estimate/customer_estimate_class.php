@@ -24,11 +24,11 @@
 
       // Get customer estimate information
       $sql = 'SELECT
-			  *
-			FROM
-			  customer_estimate
-			WHERE customer_estimate.ID = :customerEstimateId
-			LIMIT 1';
+            		*
+            	FROM
+            		customer_estimate
+            	WHERE customer_estimate.ID = :customerEstimateId
+            	LIMIT 1';
 
       $stmt = $core->dbh->prepare($sql);
       $stmt->bindParam(':customerEstimateId', $customerEstimateId);
@@ -119,12 +119,12 @@
       $core = Core::getInstance();
 
       $sql = 'SELECT
-              SUM(customer_bill_item_bom.unit_price*customer_bill_item_bom.quantity) AS total_bom_price
-            FROM
-              customer_bill_item_bom
-            LEFT JOIN customer_bill_item ON customer_bill_item.ID=customer_bill_item_bom.customer_bill_item_ID
-            WHERE
-              customer_bill_item.customer_estimate_ID = :customerEstimateId';
+                SUM(customer_bill_item_bom.unit_price*customer_bill_item_bom.quantity) AS total_bom_price
+              FROM
+                customer_bill_item_bom
+              LEFT JOIN customer_bill_item ON customer_bill_item.ID=customer_bill_item_bom.customer_bill_item_ID
+              WHERE
+                customer_bill_item.customer_estimate_ID = :customerEstimateId';
 
       $stmt = $core->dbh->prepare($sql);
       $stmt->bindParam(':customerEstimateId', $this->Id);
@@ -154,13 +154,13 @@
       $buffer = '';
 
       $sql = "SELECT
-              *,
-              payment_method.abbr AS payment_method_abbr
-            FROM
-              payment_in
-            LEFT JOIN payment_method ON payment_method.ID=payment_in.payment_method_ID
-            WHERE
-              customer_estimate_ID=$this->ID";
+                *,
+                payment_method.abbr AS payment_method_abbr
+              FROM
+                payment_in
+              LEFT JOIN payment_method ON payment_method.ID=payment_in.payment_method_ID
+              WHERE
+                customer_estimate_ID=$this->ID";
 
       $stmt = $core->dbh->prepare($sql);
       $stmt->bindParam(':customerEstimateId', $this->Id);
